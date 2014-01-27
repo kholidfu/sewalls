@@ -23,3 +23,5 @@
          "dims": "dims",
          }
    #+END_SRC
+   Setelah data terkumpul, ubah status dari 0 ke 1, menandakan bahwa url
+   sudah dikunjungi oleh crawler II.
