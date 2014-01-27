@@ -1,0 +1,25 @@
+* Step by step (Pseudo Code)
+** Cari web wallpaper dengan cms wordpress
+** Buat 2 crawler
+   Crawler I bertugas mengekstrak single page, sedangkan crawler II bertugas
+   mengambil informasi detail terkait dengan wallpaper yang akan dimasukkan
+   ke database.
+** Ekstrak single linknya dan masukkan database
+   Format data:
+   #+BEGIN_SRC python
+     urls = {
+         "url": "the_url",
+         "status": 0,
+         }
+   #+END_SRC
+   Setelah itu, jalankan crawler kedua untuk mengekstrak beberapa informasi
+   berikut dari situs target:
+   #+BEGIN_SRC python
+     data = {
+         "url": "the_url",
+         "directlink": "directlink",
+         "resolusi": "resolusi",
+         "size": "size",
+         "dims": "dims",
+         }
+   #+END_SRC
