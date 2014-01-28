@@ -39,7 +39,8 @@
    /category/.
 ** Source
 *** WP
-- [ ] [[highdefinitionwallpapers1080p.com/][highdefinitionwallpapers1080p.com]] #
+- [ ] [[highdefinitionwallpapers1080p.com/][highdefinitionwallpapers1080p.com]]
+- [ ] [[hdbeachwallpapers.com]]
 *** Non WP
 - [ ] [[ouchpress.com/celebrities/wallpapers/1861/][ouchpress.com]]
 - [ ] [[pichost.me]] #1234567
@@ -63,3 +64,11 @@
    tidak bisa diambil secara serta menggunakan /library/ misal *urllib2*.
    Solusinya adalah dengan menambahkan /header referer/ di /script/ yang
    dibuat, dengan /value/ nama /base domain/.
+
+   Contoh:
+   #+BEGIN_SRC python
+     >>> import urllib2
+     >>> req = urllib2.Request("full_url_to.jpg")
+     >>> req.urllib2.add_header("Referer", "http://www.basedomain.com")
+     >>> data = urllib2.urlopen(req).read()
+   #+END_SRC
