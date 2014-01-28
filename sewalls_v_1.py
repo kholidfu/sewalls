@@ -39,3 +39,6 @@ for link in links:
 {"url": "http://megahdwallpapers.com/wp-content/uploads/2013/11/telugu-actress-kajal-aggarwal-cute-actress-hd-wallpaper.jpg", "status": 0}
 {"url": "http://megahdwallpapers.com/wp-content/uploads/2013/11/shraddha-kapoor-desi-look-wide-monitor-hd-wallpaper.jpg", "status": 0}
 """
+
+# data ini kemudian masuk antrian di downloader script, setelah download
+# sukses, status dirubah menjadi 1
