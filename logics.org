@@ -28,5 +28,17 @@
 * NOTE
 ** prevent from crawl error algo
 ** Source
+*** WP
+- [ ] [[http://www.highdefinitionwallpapers1080p.com/][highdefinitionwallpapers1080p.com]]
+*** Non WP
 - [ ] [[http://www.ouchpress.com/celebrities/wallpapers/1861/][ouchpress.com]]
-- [ ] 
+- [ ] [[pichost.me]]
+- [ ] [[http://www.desktopwallpapers4.me/][desktopwallpapers4.me]]
+- [ ] [[http://www.suffcon.com/][suffcon]]
+- [ ] [[http://www.wallconvert.com/][wallconvert]]
+- [ ] [[http://www.superbwallpapers.com/][superbwallpapers.com]]
+- [ ] [[http://wakpaper.com/][wakpaper.com]]
+- [ ] [[http://www.girlhdwalls.com/][girlhdwalls.com]]
+- [ ] [[http://wallpaper.mobileinterview.org/][wallpaper.mobileinterview.org]]
+- [ ] [[http://www.free-hdwallpapers.com/][free-hdwallpapers.com]]
+- [ ] [[http://www.zastavki.com/][zastavki.com]]
