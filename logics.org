@@ -1,8 +1,12 @@
-* Step by step (Pseudo Code)
-** Buat 2 crawler
+* Logics & Pseudo Code
+** Crawler
    Crawler I bertugas mengekstrak single page, sedangkan crawler II bertugas
    mengambil informasi detail terkait dengan wallpaper yang akan dimasukkan
    ke database.
+** Database
+   Database juga dibuat terpisah:
+   - [ ] database url untuk dikonsumsi oleh crawler
+   - [ ] database data untuk dikonsumsi oleh aplikasi web
 ** Ekstrak single linknya dan masukkan database
    Format data:
    #+BEGIN_SRC python
@@ -24,9 +28,7 @@
    #+END_SRC
    Setelah data terkumpul, ubah status dari 0 ke 1, menandakan bahwa url
    sudah dikunjungi oleh crawler II.
-* NOTE
-** prevent from crawl error algo
-** Source
+* Source
    Source terbagi menjadi 2, *wp* dan *non-wp*, dari sisi kemudahan *wp* jelas
    lebih mudah, karena biasanya sudah menerapkan sistem pagination, sehingga
    tinggal dilakukan proses /looping/.
@@ -40,8 +42,8 @@
 - [ ] [[http://www.ouchpress.com/celebrities/wallpapers/1861/][ouchpress.com]]
 - [ ] [[pichost.me]] #1234567
 - [ ] [[http://www.desktopwallpapers4.me/][desktopwallpapers4.me]]
-- [ ] [[http://www.suffcon.com/][suffcon]]
-- [ ] [[http://www.wallconvert.com/][wallconvert]]
+- [ ] [[http://www.suffcon.com/][suffcon.com]]
+- [ ] [[http://www.wallconvert.com/][wallconvert.com]]
 - [ ] [[http://www.superbwallpapers.com/][superbwallpapers.com]]
 - [ ] [[http://wakpaper.com/][wakpaper.com]]
 - [ ] [[http://www.girlhdwalls.com/][girlhdwalls.com]]
@@ -49,6 +51,7 @@
 - [ ] [[http://www.free-hdwallpapers.com/][free-hdwallpapers.com]]
 - [ ] [[http://www.zastavki.com/][zastavki.com]]
 * Challenge
+** prevent from crawl error algo
 ** Blank referer
    Beberapa situs menerapkan proteksi /blank referer/, yang artinya gambar
    tidak bisa diambil secara serta menggunakan /library/ misal *urllib2*.
