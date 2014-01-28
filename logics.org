@@ -7,7 +7,7 @@
    Database juga dibuat terpisah:
    - [ ] database url untuk dikonsumsi oleh crawler
    - [ ] database data untuk dikonsumsi oleh aplikasi web
-** Ekstrak single linknya dan masukkan database
+** Format Data
    Format data:
    #+BEGIN_SRC python
      urls = {
