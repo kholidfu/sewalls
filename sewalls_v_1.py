@@ -2,6 +2,7 @@ import urllib2
 from bs4 import BeautifulSoup
 import gevent
 import json
+import pymongo
 
 """
 duplicate detector => url link!
@@ -18,13 +19,20 @@ soup = BeautifulSoup(html)
 
 d = {}
 
+c = pymongo.Connection()
+c.drop_database('wallpapers')
+db = c['wallpapers']
+
 for link in links:
     html = urllib2.urlopen(link).read()
     soup = BeautifulSoup(html)
     hdpost = soup.find("div", attrs={"class": "hdpost"})
     d.update({"url": hdpost.find("a", href=True)["href"]})
     d.update({"status": 0})
-    print(json.dumps(d))
+    #print(json.dumps(d))
+    db.wallpaper.insert(d)
+
+print(db.wallpaper.find_one())
 
 # output example:
 """
@@ -39,6 +47,7 @@ for link in links:
 {"url": "http://megahdwallpapers.com/wp-content/uploads/2013/11/telugu-actress-kajal-aggarwal-cute-actress-hd-wallpaper.jpg", "status": 0}
 {"url": "http://megahdwallpapers.com/wp-content/uploads/2013/11/shraddha-kapoor-desi-look-wide-monitor-hd-wallpaper.jpg", "status": 0}
 """
+
 
 # data ini kemudian masuk antrian di downloader script, setelah download
 # sukses, status dirubah menjadi 1
