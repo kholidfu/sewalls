@@ -25,3 +25,8 @@
    #+END_SRC
    Setelah data terkumpul, ubah status dari 0 ke 1, menandakan bahwa url
    sudah dikunjungi oleh crawler II.
+* NOTE
+** prevent from crawl error algo
+** Source
+- [ ] [[http://www.ouchpress.com/celebrities/wallpapers/1861/][ouchpress.com]]
+- [ ] 
