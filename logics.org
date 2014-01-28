@@ -37,6 +37,7 @@
    Untuk yang *non-wp*, dilihat dulu dari url, kalo menggunakan sistem url
    berurut, maka tinggal di-/looping/, kalau tidak secara manual gunakan
    /category/.
+** Source
 *** WP
 - [ ] [[highdefinitionwallpapers1080p.com/][highdefinitionwallpapers1080p.com]] #
 *** Non WP
