@@ -51,6 +51,7 @@
 - [ ] [[free-hdwallpapers.com/][free-hdwallpapers.com]]
 - [ ] [[zastavki.com/][zastavki.com]]
 - [ ] [[hdwallpapers.net]]
+- [ ] [[santabanta.com/wallpapers/][santabanta.com/wallpapers]]
 * Challenge
 ** prevent from crawl error algo
 ** Blank referer
