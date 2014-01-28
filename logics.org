@@ -31,6 +31,7 @@
    Source terbagi menjadi 2, *wp* dan *non-wp*, dari sisi kemudahan *wp* jelas
    lebih mudah, karena biasanya sudah menerapkan sistem pagination, sehingga
    tinggal dilakukan proses /looping/.
+
    Untuk yang *non-wp*, dilihat dulu dari url, kalo menggunakan sistem url
    berurut, maka tinggal di-/looping/, kalau tidak secara manual gunakan
    /category/.
