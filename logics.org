@@ -76,6 +76,8 @@
          })
      data = urllib2.urlopen(req).read()
    #+END_SRC
+   Agar lebih meyakinkan, kita dapat membuat beberapa /user-agent/, kemudian
+   kita pilih secara /random/ setiap kali melakukan /http request/.
 ** File naming
    Kalau beruntung, kita mendapatkan file dengan penamaan yang lengkap dan
    merefleksikan isi dari wallpaper tersebut, kalau tidak kita mungkin cuma
