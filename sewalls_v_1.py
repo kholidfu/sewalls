@@ -8,7 +8,7 @@ duplicate detector => url link!
 
 html = urllib2.urlopen("http://megahdwallpapers.com/").read()
 soup = BeautifulSoup(html)
-divs = soup.findAll("div", attrs={"class": "grid_6"})
+divs = soup.findAll("div", attrs={"class": "hdpost"})
 # got single link
 links = [i.find("a", href=True)["href"] for i in divs]
 

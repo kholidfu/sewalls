@@ -50,6 +50,7 @@
 - [ ] [[wallpaper.mobileinterview.org/][wallpaper.mobileinterview.org]]
 - [ ] [[free-hdwallpapers.com/][free-hdwallpapers.com]]
 - [ ] [[zastavki.com/][zastavki.com]]
+- [ ] [[hdwallpapers.net]]
 * Challenge
 ** prevent from crawl error algo
 ** Blank referer
