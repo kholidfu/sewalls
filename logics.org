@@ -76,11 +76,6 @@
          })
      data = urllib2.urlopen(req).read()
    #+END_SRC
-
-* Tesing bikin table
-#+BEGIN_SRC text
-| URL    | Status |
-|--------+--------|
-| blabla | 0      |
-| blibli | 1      |
-#+END_SRC
+* What to do next
+  Setelah data terkumpul /cukup/ banyak, aplikasi ini diautomasi dengan 
+  mengandalkan rss feed wallpaper yang banyak bertebaran di luar sana.
