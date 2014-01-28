@@ -59,7 +59,7 @@
 ** Manual
    Sesuai namanya, kita browse dan download wallpaper secara manual.
 * Challenge
-** prevent from crawl error algo
+** Prevent from crawl error algo
 ** Blank referer
    Beberapa situs menerapkan proteksi /blank referer/, yang artinya gambar
    tidak bisa diambil secara serta menggunakan /library/ misal *urllib2*.
@@ -76,6 +76,12 @@
          })
      data = urllib2.urlopen(req).read()
    #+END_SRC
+** File naming
+   Kalau beruntung, kita mendapatkan file dengan penamaan yang lengkap dan
+   merefleksikan isi dari wallpaper tersebut, kalau tidak kita mungkin cuma
+   dapat *123.jpg* atau sejenisnya. 
+
+   Bagaimana membuat nama file yang merefleksikan isi dari gambar?
 * What to do next
   Setelah data terkumpul /cukup/ banyak, aplikasi ini diautomasi dengan 
   mengandalkan rss feed wallpaper yang banyak bertebaran di luar sana.
