@@ -1,5 +1,4 @@
 * Step by step (Pseudo Code)
-** Cari web wallpaper dengan cms wordpress
 ** Buat 2 crawler
    Crawler I bertugas mengekstrak single page, sedangkan crawler II bertugas
    mengambil informasi detail terkait dengan wallpaper yang akan dimasukkan
