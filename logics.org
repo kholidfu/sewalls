@@ -67,8 +67,11 @@
 
    Contoh:
    #+BEGIN_SRC python
-     >>> import urllib2
-     >>> req = urllib2.Request("full_url_to.jpg")
-     >>> req.urllib2.add_header("Referer", "http://www.basedomain.com")
-     >>> data = urllib2.urlopen(req).read()
+     import urllib2
+     
+     req = urllib2.Request("full_url_to.jpg", headers={
+         "Referer": "http://www.basedomain.com",
+         "User-agent": "Mozilla/5.0",
+         })
+     data = urllib2.urlopen(req).read()
    #+END_SRC
