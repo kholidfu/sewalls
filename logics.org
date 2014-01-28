@@ -28,7 +28,8 @@
    #+END_SRC
    Setelah data terkumpul, ubah status dari 0 ke 1, menandakan bahwa url
    sudah dikunjungi oleh crawler II.
-* Source
+* Methods
+** Automatic
    Source terbagi menjadi 2, *wp* dan *non-wp*, dari sisi kemudahan *wp* jelas
    lebih mudah, karena biasanya sudah menerapkan sistem pagination, sehingga
    tinggal dilakukan proses /looping/.
@@ -36,9 +37,9 @@
    Untuk yang *non-wp*, dilihat dulu dari url, kalo menggunakan sistem url
    berurut, maka tinggal di-/looping/, kalau tidak secara manual gunakan
    /category/.
-** WP
+*** WP
 - [ ] [[highdefinitionwallpapers1080p.com/][highdefinitionwallpapers1080p.com]] #
-** Non WP
+*** Non WP
 - [ ] [[ouchpress.com/celebrities/wallpapers/1861/][ouchpress.com]]
 - [ ] [[pichost.me]] #1234567
 - [ ] [[desktopwallpapers4.me/][desktopwallpapers4.me]]
@@ -52,6 +53,8 @@
 - [ ] [[zastavki.com/][zastavki.com]]
 - [ ] [[hdwallpapers.net]]
 - [ ] [[santabanta.com/wallpapers/][santabanta.com/wallpapers]]
+** Manual
+   Sesuai namanya, kita browse dan download wallpaper secara manual.
 * Challenge
 ** prevent from crawl error algo
 ** Blank referer
