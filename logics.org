@@ -49,3 +49,9 @@
 - [ ] [[http://wallpaper.mobileinterview.org/][wallpaper.mobileinterview.org]]
 - [ ] [[http://www.free-hdwallpapers.com/][free-hdwallpapers.com]]
 - [ ] [[http://www.zastavki.com/][zastavki.com]]
+* Challenge
+** Blank referer
+   Beberapa situs menerapkan proteksi /blank referer/, yang artinya gambar
+   tidak bisa diambil secara serta menggunakan /library/ misal *urllib2*.
+   Solusinya adalah dengan menambahkan /header referer/ di /script/ yang
+   dibuat, dengan /value/ nama /base domain/.
