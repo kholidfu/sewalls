@@ -1,35 +1,28 @@
 #!/usr/bin/env python
 """
-Seharusnya, model aplikasi seperti ini, tidak akan memeriksa apakah
-suatu image sudah ada dalam database atau belum. Kalau pun harus,
-membutuhkan resource server yang luar biasa handal.
+Proses:
+1. get 15000 images
+2. upload to online storage service (opsional)
+3. create thumb and insert into dbase
+4. del big images
 
-Berikut ini adalah pekerjaan2 yang akan dicron nantinya:
-1. create thumbnail
-2. insert database
-{
-title: ...,
-filesize: ...,
-format: ...,
-added: ...,
-dims: ...,
-hits: ...,
-tags: ...,
-}
+Note:
+Ukuran image besar 15000 image == 5.6GB
+ukuran thumbnail 15000 image ukuran 250 width == 120MB
+Berarti untuk 160GB image besar, hanya butuh ~ 3.5GB
 """
+
 import os
 from PIL import Image
 
-def create_thumb(image):
-    pass
-
-def insert_dbase(image):
-    pass
-
-def move_thumb(thumb):
+def automage():
+    """
+    1. mass download 15000 files
+    2. upload to online storage
+    3. create thumb + insert into dbase
+    4. delete the real images.
+    """
     pass
 
 if __name__ == "__main__":
-    create_thumb(image)
-    insert_dbase(image)
-    move_thumb(image)
+    automage()
