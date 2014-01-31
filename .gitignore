@@ -3,6 +3,7 @@ pichost.py
 *~
 include/
 local/
+nohup.out
 
 # C extensions
 *.so
