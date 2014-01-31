@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 """
+Seharusnya, model aplikasi seperti ini, tidak akan memeriksa apakah
+suatu image sudah ada dalam database atau belum. Kalau pun harus,
+membutuhkan resource server yang luar biasa handal.
+
+Berikut ini adalah pekerjaan2 yang akan dicron nantinya:
 1. create thumbnail
 2. insert database
 {
