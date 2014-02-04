@@ -65,5 +65,43 @@ gevent.joinall(jobs)
 # setelah itu looping urls, ubah status dari 0 menjadi 1
 # setelah itu thumbnail
 # done!
+print "done, now thumbnailing"
 
-print db.wallpaper.find_one()
+for url in urls:
+    db.url.update({"page": url}, {"$set": {"status": 1}})
+
+print "status updated to 1"
+
+# sementara kita kembalikan lagi ke 0
+for url in urls:
+    db.url.update({"status": 1}, {"$set": {"status": 0}})
+
+import os
+try:
+    from imgtools.thumbnailer import Thumbnailer
+    t = Thumbnailer()
+except:
+    print 'error importing'
+
+from PIL import Image
+
+for image in os.listdir("/home/banteng/Desktop/pichost"):
+    try:
+        im = Image.open("/home/banteng/Desktop/pichost/" + image)
+
+        if im.size[0] >= 1920 and im.size[0]/float(im.size[1]) >= 1.6:
+            print im.size
+            # resize and crop
+            try:
+                t.resize_and_crop("/home/banteng/Desktop/pichost/" + image,
+                                      "/home/banteng/Desktop/thumb/thumb_" + image,
+                                      (250, 188),
+                                      'middle')
+            except:
+                print 'error thumbnailing'
+            # input into mongo
+    except:
+        print 'gagal'
+        continue
+
+print "job all done"
