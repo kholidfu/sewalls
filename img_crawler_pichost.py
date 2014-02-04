@@ -21,7 +21,7 @@ except:
 c = pymongo.Connection()
 db = c["urls"]
 
-c.drop_database("wallpapers")
+#c.drop_database("wallpapers")
 db2 = c["wallpapers"]
 
 def phostgrab(url):
