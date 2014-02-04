@@ -3,11 +3,20 @@ from gevent import monkey
 monkey.patch_all()
 import urllib2
 from bs4 import BeautifulSoup
-# non-fatigue robots :)
 import time
 from datetime import datetime
-
+import os
 import pymongo
+from PIL import Image
+
+try:
+    from imgtools.thumbnailer import Thumbnailer
+    t = Thumbnailer()
+except:
+    print 'error importing'
+
+
+# database things
 c = pymongo.Connection()
 db = c["urls"]
 
@@ -53,9 +62,7 @@ def phostgrab(url):
 
 # cari data secara random dari dabatase "urls" yang memiliki status 0
 from random import randint
-
 lendata = db.url.find().count()
-
 rndnum = randint(0, lendata-10)
 
 urls = [i['page'] for i in db.url.find({'status': 0}).skip(rndnum).limit(10)]
@@ -63,45 +70,29 @@ jobs = [gevent.spawn(phostgrab, url) for url in urls]
 gevent.joinall(jobs)
 
 # setelah itu looping urls, ubah status dari 0 menjadi 1
-# setelah itu thumbnail
-# done!
-print "done, now thumbnailing"
-
 for url in urls:
     db.url.update({"page": url}, {"$set": {"status": 1}})
-
-print "status updated to 1"
 
 # sementara kita kembalikan lagi ke 0
 for url in urls:
     db.url.update({"status": 1}, {"$set": {"status": 0}})
 
-import os
-try:
-    from imgtools.thumbnailer import Thumbnailer
-    t = Thumbnailer()
-except:
-    print 'error importing'
-
-from PIL import Image
+# setelah itu thumbnail
 
 for image in os.listdir("/home/banteng/Desktop/pichost"):
     try:
         im = Image.open("/home/banteng/Desktop/pichost/" + image)
 
         if im.size[0] >= 1920 and im.size[0]/float(im.size[1]) >= 1.6:
-            print im.size
             # resize and crop
-            try:
-                t.resize_and_crop("/home/banteng/Desktop/pichost/" + image,
-                                      "/home/banteng/Desktop/thumb/thumb_" + image,
-                                      (250, 188),
-                                      'middle')
-            except:
-                print 'error thumbnailing'
-            # input into mongo
+            t.resize_and_crop(
+                "/home/banteng/Desktop/pichost/" + image,
+                "/home/banteng/Desktop/thumb/thumb_" + image,
+                (250, 188),
+                'middle')
     except:
         print 'gagal'
         continue
 
 print "job all done"
+# done!
