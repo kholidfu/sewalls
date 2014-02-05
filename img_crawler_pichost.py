@@ -9,7 +9,7 @@ import os
 import sys
 import pymongo
 from PIL import Image
-
+from urlparse import urlparse
 try:
     from imgtools.thumbnailer import Thumbnailer
     t = Thumbnailer()
@@ -58,7 +58,6 @@ def phostgrab(url):
             'added': datetime.now(),
             'hits': 0,
             'tags': h1.split() + [urlparse(url).hostname],
-            'source': url,
             })
 
     except:
