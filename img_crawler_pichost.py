@@ -53,8 +53,12 @@ def phostgrab(url):
         db2.wallpaper.insert({
             'title': h1,
             'url': url,
-            'filetype': filetype,
-            'filesize': filesize,
+            'format': filetype,
+            'size': filesize,
+            'added': datetime.now(),
+            'hits': 0,
+            'tags': h1.split() + [urlparse(url).hostname],
+            'source': url,
             })
 
     except:
