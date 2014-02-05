@@ -51,7 +51,7 @@ def phostgrab(url):
 
         # insert into mongodb
         db2.wallpaper.insert({
-            'title': h1,
+            'title': h1, # full-text search
             'url': url,
             'format': filetype,
             'size': filesize,
