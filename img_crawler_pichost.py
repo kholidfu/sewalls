@@ -69,7 +69,7 @@ from random import randint
 lendata = db.url.find().count()
 rndnum = randint(0, lendata-10)
 
-urls = [i['page'] for i in db.url.find({'status': 0}).skip(rndnum).limit(5)]
+urls = [i['page'] for i in db.url.find({'status': 0}).skip(rndnum).limit(10)]
 jobs = [gevent.spawn(phostgrab, url) for url in urls]
 gevent.joinall(jobs)
 
