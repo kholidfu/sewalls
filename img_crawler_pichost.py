@@ -14,7 +14,7 @@ try:
     from imgtools.thumbnailer import Thumbnailer
     t = Thumbnailer()
 except:
-    print 'error importing'
+    sys.stdout.write('error importing')
 
 
 # database things
@@ -23,6 +23,7 @@ db = c["urls"]
 
 #c.drop_database("wallpapers")
 db2 = c["wallpapers"]
+
 
 def phostgrab(url):
     """fungsi ini akan mendownload 10 image tiap kali dijalankan."""
@@ -58,6 +59,7 @@ def phostgrab(url):
             'added': datetime.now(),
             'hits': 0,
             'tags': h1.split() + [urlparse(url).hostname],
+            # 'imgid': int([i.get("imgid", 1) for i in db.wallpaper.find().sort("_id", -1).limit(1)][0]) + 1
             })
 
     except:
@@ -81,15 +83,35 @@ for url in urls:
 #>>> [db.url.update({'status': 1}, {"$set": {"status": 0}}) for i in db.url.find({'status': 1})]
 
 # setelah itu thumbnail
+# @TODO:
+# auto generate folder when 10.000 images limit reached
+# how to count images on each folder?
+
+from glob import glob
+rootdir = "/home/banteng/Desktop/thumb/"
+
+dest = "/home/banteng/Desktop/thumb/1/1"
+limc = 2
+
 for image in os.listdir("/home/banteng/Desktop/pichost"):
+    a = glob("/home/banteng/Desktop/thumb/*")
+    b = glob("/home/banteng/Desktop/thumb/*/")
+    c = glob("/home/banteng/Desktop/thumb/*/*/*")
+
     try:
         im = Image.open("/home/banteng/Desktop/pichost/" + image)
         sys.stdout.write("opening image " + image + "\n")
         if im.size[0] >= 1920 and im.size[0]/float(im.size[1]) >= 1.6:
+            if len(c) > limc:
+                # create newdir
+                # sebelum create dir, kita lihat dir terakhir/terbesar dulu
+                # njlimet tenan, rentan error
+                os.makedirs(rootdir + "/1/" + str(int(dest.split("/")[-1]) + 1))
+                dest = "/home/banteng/Desktop/thumb/1/" + str(int(dest.split("/")[-1]) + 1)
             # resize and crop
             t.resize_and_crop(
                 "/home/banteng/Desktop/pichost/" + image,
-                "/home/banteng/Desktop/thumb/thumb_" + image,
+                dest + "/thumb_" + image,
                 (250, 188),
                 'middle')
             sys.stdout.write("thumbnailing image " + image + "\n")
