@@ -44,13 +44,15 @@ def phostgrab(url):
         filetype = response.info()["Content-Type"].split("/")[-1]
         filesize = response.info()["Content-Length"]
 
-        buf = StringIO(response.read())
+        responsebuf = response.read()
+
+        buf = StringIO(responsebuf)
         im = Image.open(buf)
 
         if im.size[0] >= 1920 and im.size[0]/float(im.size[1]) >= 1.6:
             try:
                 t.resize_and_crop(
-                    StringIO(urllib2.urlopen(imgurl).read()), # PR besar, kenapa response harus di-load 2x? :(
+                    StringIO(responsebuf), # PR besar, kenapa response harus di-load 2x? :(
                     "/home/banteng/Desktop/thumb_" + h1 + "." + filetype,
                     (252, 188),
                     'middle')
@@ -63,7 +65,7 @@ def phostgrab(url):
                     'added': datetime.now(),
                     'hits': 0,
                     'tags': h1.split() + [urlparse(url).hostname],
-                    'imghash': hashlib.md5(response.read()).hexdigest(),
+                    'imghash': hashlib.md5(responsebuf).hexdigest(),
                 })
                 sys.stdout.write("sukses inserting data\n")
 
