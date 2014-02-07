@@ -56,5 +56,6 @@ class Thumbnailer(object):
             img = img.resize((size[0], size[1]),
                              Image.ANTIALIAS)
             # If the scale is the same, we do not need to crop
+        img.convert('RGB')
         img.save(modified_path)
 
