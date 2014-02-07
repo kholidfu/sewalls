@@ -52,7 +52,7 @@ def phostgrab(url):
         if im.size[0] >= 1920 and im.size[0]/float(im.size[1]) >= 1.6:
             try:
                 t.resize_and_crop(
-                    StringIO(responsebuf), # PR besar, kenapa response harus di-load 2x? :(
+                    StringIO(responsebuf), 
                     "/home/banteng/Desktop/thumb_" + h1 + "." + filetype,
                     (252, 188),
                     'middle')
