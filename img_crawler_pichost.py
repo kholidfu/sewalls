@@ -23,6 +23,19 @@ db = c["urls"]
 #c.drop_database("wallpapers")
 db2 = c["wallpapers"]
 
+import re
+from unidecode import unidecode
+
+_punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
+
+
+def slugify(text, delim=u'_'):
+    """Generates an ASCII-only slug."""
+    result = []
+    for word in _punct_re.split(text.lower()):
+        result.extend(unidecode(word).split())
+    return unicode(delim.join(result))
+
 
 def phostgrab(url):
     """fungsi ini akan mendownload 10 image tiap kali dijalankan."""
@@ -53,7 +66,7 @@ def phostgrab(url):
             try:
                 t.resize_and_crop(
                 StringIO(responsebuf),
-                "/home/banteng/Desktop/thumb_" + h1 + "_" + hashlib.md5(responsebuf).hexdigest() + "." + filetype,
+                "/home/banteng/Desktop/thumb_" + slugify(h1) + "_" + hashlib.md5(responsebuf).hexdigest() + "." + filetype,
                 (252, 188),
                 'middle')
                 # insert into mongodb only for qualified image
