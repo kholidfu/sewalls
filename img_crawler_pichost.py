@@ -13,6 +13,8 @@ from PIL import Image
 from urlparse import urlparse
 from imgtools.thumbnailer import Thumbnailer
 import hashlib
+import shutil
+from bson.objectid import ObjectId
 
 t = Thumbnailer()
 
@@ -70,7 +72,7 @@ def phostgrab(url):
                 (252, 188),
                 'middle')
                 # insert into mongodb only for qualified image
-                db2.wallpaper.insert({
+                imgid = db2.wallpaper.insert({
                     'title': h1, # full-text search
                     'url': url, # unique
                     'format': filetype,
@@ -87,6 +89,21 @@ def phostgrab(url):
             except IOError as e:
                 print e
 
+        # prepare for the hardest thing ...
+        imgdatasingle = db.wallpaper.find({"_id": ObjectId(imgid)})
+        # read the temp dirs
+        imgtemps = os.listdir("/home/banteng/Desktop/temp")
+        # create the folders [if not exist]
+        try:
+            os.makedirs("/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"])
+        except OSERROR as exc:
+            if exc.errno == errno.EEXIST and os.path.isdir("/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"]):
+                pass
+            else:
+                raise
+
+        # move the image!
+        shutil.move("/home/banteng/Desktop/temp/" + imgdatasingle["thumb"] + , "/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"])
     except:
         pass
 
