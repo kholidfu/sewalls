@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import time
 from datetime import datetime
 import os
+import errno
 from StringIO import StringIO
 import sys
 import pymongo
