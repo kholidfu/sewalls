@@ -66,7 +66,7 @@ def phostgrab(url):
             try:
                 t.resize_and_crop(
                 StringIO(responsebuf),
-                "/home/banteng/Desktop/thumb_" + slugify(h1) + "_" + hashlib.md5(responsebuf).hexdigest() + "." + filetype,
+                "/home/banteng/Desktop/temp/thumb_" + slugify(h1) + "_" + hashlib.md5(responsebuf).hexdigest() + "." + filetype,
                 (252, 188),
                 'middle')
                 # insert into mongodb only for qualified image
@@ -83,6 +83,7 @@ def phostgrab(url):
                     'imghash': hashlib.md5(responsebuf).hexdigest(),
                     })
                 sys.stdout.write("sukses inserting data\n")
+                # bar iki terus di pindah ke folder yang sesuai
             except IOError as e:
                 print e
 
