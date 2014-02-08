@@ -86,24 +86,29 @@ def phostgrab(url):
                     })
                 sys.stdout.write("sukses inserting data\n")
                 # bar iki terus di pindah ke folder yang sesuai
+                # prepare for the hardest thing ...
+                print 'getting data'
+                imgdatasingle = db2.wallpaper.find_one({"_id": ObjectId(imgid)})
+                print '\ngetting data sukses'
+                print imgdatasingle["_id"]
+                # create the folders [if not exist]
+                try:
+                    os.makedirs("/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"])
+                    print 'sukses membuat data'
+                except OSERROR as exc:
+                    if exc.errno == errno.EEXIST and os.path.isdir("/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"]):
+                        print 'mboh error'
+                        pass
+                    else:
+                        raise
+                    print 'sudah ada bos'
+
+                # move the image!
+                shutil.move("/home/banteng/Desktop/temp/" + imgdatasingle["thumb"], "/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"] + "/" + imgdatasingle["thumb"])
+
             except IOError as e:
                 print e
 
-        # prepare for the hardest thing ...
-        imgdatasingle = db.wallpaper.find({"_id": ObjectId(imgid)})
-        # read the temp dirs
-        imgtemps = os.listdir("/home/banteng/Desktop/temp")
-        # create the folders [if not exist]
-        try:
-            os.makedirs("/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"])
-        except OSERROR as exc:
-            if exc.errno == errno.EEXIST and os.path.isdir("/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"]):
-                pass
-            else:
-                raise
-
-        # move the image!
-        shutil.move("/home/banteng/Desktop/temp/" + imgdatasingle["thumb"] + , "/home/banteng/Desktop/thumb/" + imgdatasingle["dirname"])
     except:
         pass
 
