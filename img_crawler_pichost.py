@@ -53,7 +53,7 @@ def phostgrab(url):
             try:
                 t.resize_and_crop(
                 StringIO(responsebuf),
-                "/home/banteng/Desktop/thumb_" + h1 + "." + filetype,
+                "/home/banteng/Desktop/thumb_" + h1 + "_" + hashlib.md5(responsebuf).hexdigest() + "." + filetype,
                 (252, 188),
                 'middle')
                 # insert into mongodb only for qualified image
