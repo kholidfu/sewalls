@@ -75,6 +75,8 @@ def phostgrab(url):
                     'url': url, # unique
                     'format': filetype,
                     'size': filesize,
+                    'thumb': "thumb_" + slugify(h1) + "_" + hashlib.md5(responsebuf).hexdigest() + "." + filetype,
+                    'dirname': None, # two factors /thumb/abc/def/
                     'added': datetime.now(),
                     'hits': 0,
                     'tags': h1.split() + [urlparse(url).hostname],
