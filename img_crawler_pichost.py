@@ -52,10 +52,10 @@ def phostgrab(url):
         if im.size[0] >= 1920 and im.size[0]/float(im.size[1]) >= 1.6:
             try:
                 t.resize_and_crop(
-                    StringIO(responsebuf), 
-                    "/home/banteng/Desktop/thumb_" + h1 + "." + filetype,
-                    (252, 188),
-                    'middle')
+                StringIO(responsebuf),
+                "/home/banteng/Desktop/thumb_" + h1 + "." + filetype,
+                (252, 188),
+                'middle')
                 # insert into mongodb only for qualified image
                 db2.wallpaper.insert({
                     'title': h1, # full-text search
@@ -66,9 +66,8 @@ def phostgrab(url):
                     'hits': 0,
                     'tags': h1.split() + [urlparse(url).hostname],
                     'imghash': hashlib.md5(responsebuf).hexdigest(),
-                })
+                    })
                 sys.stdout.write("sukses inserting data\n")
-
             except IOError as e:
                 print e
 
