@@ -79,7 +79,7 @@ def phostgrab(url):
                            hits=0,
                            tags=h1.split() + [urlparse(url).hostname],
                            )
-                os.unlink("/home/banteng/Desktop/temp/thumb_" + slugify(h1) + "." + filetype.split("/")[-1])
+                # os.unlink("/home/banteng/Desktop/temp/thumb_" + slugify(h1) + "." + filetype.split("/")[-1])
 
             except IOError as e:
                 print e
