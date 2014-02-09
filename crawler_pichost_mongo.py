@@ -3,20 +3,16 @@ from gevent import monkey
 monkey.patch_all()
 import urllib2
 from bs4 import BeautifulSoup
-import time
-from datetime import datetime
 import os
-import errno
 from StringIO import StringIO
-import sys
 import pymongo
 from gridfs import GridFS
 from PIL import Image
 from urlparse import urlparse
 from imgtools.thumbnailer import Thumbnailer
-import hashlib
 import shutil
-from bson.objectid import ObjectId
+import re
+from unidecode import unidecode
 
 t = Thumbnailer()
 
@@ -26,13 +22,10 @@ db = c["urls"]
 
 #c.drop_database("wallpapers")
 db2 = c["wallpapers"]
+# activate gridfs
 fs = GridFS(db2)
 
-import re
-from unidecode import unidecode
-
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
-
 
 def slugify(text, delim=u'_'):
     """Generates an ASCII-only slug."""
@@ -75,10 +68,8 @@ def phostgrab(url):
                 (252, 188),
                 'middle')
                 # bar diresize terus di open
-                print 'opening thumb'
                 with open("/home/banteng/Desktop/temp/thumb_" + slugify(h1) + "." + filetype.split("/")[-1]) as f:
                     # insert into mongodb only for qualified image
-                    print 'inserting into mongo gridfs'
                     oid = fs.put(f,
                            content_type=filetype,
                            title=h1,
@@ -88,11 +79,7 @@ def phostgrab(url):
                            hits=0,
                            tags=h1.split() + [urlparse(url).hostname],
                            )
-                    print 'inserting sukses'
-                    print oid
-                print 'deleting thumb'
                 os.unlink("/home/banteng/Desktop/temp/thumb_" + slugify(h1) + "." + filetype.split("/")[-1])
-                print 'deleting sukses'
 
             except IOError as e:
                 print e
@@ -116,5 +103,5 @@ for url in urls:
 
 # updating data status back to 0
 #>>> [db.url.update({'status': 1}, {"$set": {"status": 0}}) for i in db.url.find({'status': 1})]
-
+# looping = [i for i in db.fs.files.find()]
 # done!
