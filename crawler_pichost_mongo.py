@@ -104,4 +104,5 @@ for url in urls:
 # updating data status back to 0
 #>>> [db.url.update({'status': 1}, {"$set": {"status": 0}}) for i in db.url.find({'status': 1})]
 # looping = [i for i in db.fs.files.find()]
+# data count = db.fs.files.find().count()
 # done!
