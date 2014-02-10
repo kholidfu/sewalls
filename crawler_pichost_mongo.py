@@ -72,7 +72,7 @@ def phostgrab(url):
                     # insert into mongodb only for qualified image
                     oid = fs.put(f,
                            content_type=filetype,
-                           title=h1,
+                           title=h1.replace("_", " "),
                            url=url,
                            imgformat=filetype.split("/")[-1],
                            size=filesize,
